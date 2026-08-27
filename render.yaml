@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: jangil-tickets
+    runtime: docker
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: DEMO_PAYMENT
+        value: "false"
+      - key: ADMIN_KEY
+        generateValue: true
+      - key: JANGIL_DB
+        value: /var/data/jangil.db
+    disk:
+      name: jangil-data
+      mountPath: /var/data
+      sizeGB: 1
